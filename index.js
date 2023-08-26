@@ -3,8 +3,8 @@ const fs = require('fs');
 const generatemarkdown = require('./utils/generateMarkdown');
 
 //call .prompt later.  For now just put the const questions in an array.  
-inquirer
-  .prompt([
+const questions =
+[
     {
         type: 'input',
         name: 'Title',
@@ -35,7 +35,7 @@ inquirer
       type: 'list',
       name: 'License',
       message: 'What license will you be using?',
-      choices: ['MIT', 'OtherLicenseA', 'OtherLicenseB'],
+      choices: ['Apache License 2.0','Boost Software License 1.0','MIT License','Mozilla Public License 2.0','GNU General Public License v3.0'],
     }, 
     {
       type: 'input',
@@ -57,12 +57,8 @@ inquirer
       name: 'Email',
       message: 'What is your e-mail address?',
     },
-  ])
-  .then((data) => {
-    fs.writeFile('README.md', (generatemarkdown), (err) =>
-      err ? console.log(err) : console.log('Success!')
-    );
-  });
+  ]
+
 
 
 
@@ -71,7 +67,13 @@ inquirer
 
 // TODO: Create a function to write README file
 //function writeToFile(fileName, data) {}
-
+inquirer
+  .prompt
+  .then((data) => {
+    fs.writeFile('README.md', (generatemarkdown), (err) =>
+      err ? console.log(err) : console.log('Success!')
+    );
+  });
 // TODO: Create a function to initialize app
 //function init() {}
 
