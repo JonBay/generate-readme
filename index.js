@@ -2,80 +2,88 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generatemarkdown = require('./utils/generateMarkdown');
 
-//call .prompt later.  For now just put the const questions in an array.  
 const questions =
 [
     {
         type: 'input',
-        name: 'Title',
+        name: 'title',
         message: 'What is the title of your project?'
       },
     {
       type: 'input',
-      name: 'Description',
+      name: 'description',
       message: 'Give a brief description of your project.',
     },
-    // {  this one will just be generated in the file.  
-    //   type: 'checkbox',
-    //   message: 'What languages do you know?',
-    //   name: 'TableofContents',
-    //   choices: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
-    // },
     {
       type: 'input',
-      name: 'Installation',
+      name: 'installation',
       message: 'What are the instructions for installing your project?',
     },
     {
       type: 'input',
-      name: 'Usage',
+      name: 'usage',
       message: 'Provide instructions and examples of use for this project.',
     },
     {
       type: 'list',
-      name: 'License',
+      name: 'license',
       message: 'What license will you be using?',
       choices: ['Apache License 2.0','Boost Software License 1.0','MIT License','Mozilla Public License 2.0','GNU General Public License v3.0'],
     }, 
     {
       type: 'input',
-      name: 'Contributing',
+      name: 'contributing',
       message: 'List the git hub username of any contributors.  If none leave blank.',
     },    
     {
-      type: 'list',
-      name: 'Tests',
+      type: 'input',
+      name: 'tests',
       message: 'List any test instructions.',
     },
     {
       type: 'input',
-      name: 'Username',
+      name: 'username',
       message: 'What is your GitHub username?',
     },
     {
       type: 'input',
-      name: 'Email',
+      name: 'email',
       message: 'What is your e-mail address?',
     },
   ]
 
 
 
-
-// TODO: Create an array of questions for user input
-//const questions = [];
-
 // TODO: Create a function to write README file
-//function writeToFile(fileName, data) {}
-inquirer
-  .prompt
-  .then((data) => {
-    fs.writeFile('README.md', (generatemarkdown), (err) =>
-      err ? console.log(err) : console.log('Success!')
-    );
-  });
-// TODO: Create a function to initialize app
-//function init() {}
+function writeToFile(fileName, data) 
+  {
+    fs.writeFile(fileName, data, (err) =>
+      {
+        if(err)
+          {
+            console.error(err);
+          }
+        else
+          {
+            console.log('File was created successfully!');
+          }  
+      });
+  }
 
-// Function call to initialize app
-//init();
+function init() 
+  {
+    inquirer
+      .prompt(questions)
+      .then((response) => 
+        {
+          const questionResponses = generatemarkdown(response);
+          writeToFile('README.md', questionResponses);
+        })
+        .catch((err) =>
+          {
+            console.error(err);
+          });
+  }
+
+
+init();
