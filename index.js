@@ -36,7 +36,7 @@ const questions =
       message: 'List the git hub username of any contributors.  If none leave blank.',
     },    
     {
-      type: 'list',
+      type: 'input',
       name: 'tests',
       message: 'List any test instructions.',
     },
