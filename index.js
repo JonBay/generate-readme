@@ -54,7 +54,7 @@ const questions =
 
 
 
-// TODO: Create a function to write README file
+// function to write README file
 function writeToFile(fileName, data) 
   {
     fs.writeFile(fileName, data, (err) =>
@@ -70,6 +70,7 @@ function writeToFile(fileName, data)
       });
   }
 
+// function to ask questions and run generatemarkdown
 function init() 
   {
     inquirer
@@ -85,5 +86,5 @@ function init()
           });
   }
 
-
+//initilize app
 init();
