@@ -15,7 +15,7 @@
   - [Questions](#questions)
 
   ## Installation
-  Clone the repository at github.com/JonBay/generate-readme and then run node index.js in the terminal 
+  Clone the repository at github.com/JonBay/generate-readme and then run node index.js in the terminal. 
 
   ## Usage
   Use the app to quickly create a readme file for a new project.  
