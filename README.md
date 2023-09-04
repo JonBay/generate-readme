@@ -4,6 +4,7 @@
 
   ## Description
   This is an app that will generate a quality README by answering a series of prompts in the terminal.  
+  For a demonstration of how this app functions view the video here: https://drive.google.com/file/d/1jhHMqVxSQcgzGGKyflLa-Jj47at0t0Rh/view
 
   ## Table of Contents 
   - [Description](#description)
